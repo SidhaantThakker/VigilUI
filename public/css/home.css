@@ -4,29 +4,42 @@
   box-sizing: border-box;
 }
 body {
-  font-family: "Times New Roman", Helvetica, sans-serif;
+  font-family: "Helvetica", Helvetica, sans-serif;
+}
+
+select{
+  width: 35%;
+  height: 30px;
 }
 .main-body {
   display: flex;
-  background-color: #d4e9fe;
+  background-color: #e9e9e9;
   min-height: 100vh;
 }
 .navbar {
   width: 8%;
   display: flex;
   flex-direction: column;
-  background-color: #fea735;
-  border-radius: 0 12px 12px 0;
+  background-color: #3d49b8;
   margin-right: 8px;
-  box-shadow: 5px 5px #fa8e01;
 }
-.logo {
+.logo, .logo:hover{
+  text-decoration: none;
   margin-top: 22px;
 }
-.input-portion,
+a, a:hover{
+  color: #e9e9e9;
+  text-decoration: none;
+}
+.input-portion{
+  width: 56%;
+  margin: 10px;
+  display: flex;
+  justify-content: center;
+}
 .display-portion {
-  width: 46%;
-  margin: 24px;
+  width: 36%;
+  margin: 2px;
   display: flex;
   justify-content: center;
 }
@@ -39,9 +52,6 @@ body {
 .nav-button {
   font-size: 50px;
 }
-.fas:hover {
-  color: #000;
-}
 .form-body {
   height: 80vh;
   display: flex;
@@ -53,7 +63,7 @@ body {
   margin-bottom: 4px;
   font-size: 2rem;
   font-weight: bold;
-  color: #fa8e01;
+  color: #111111;
 }
 .form-control {
   width: 80%;
@@ -68,38 +78,25 @@ body {
   flex-direction: column;
   justify-content: space-between;
 }
-.radio-button {
-  margin-bottom: 12px;
-}
 .main-button {
   transform: scale(1.5);
 }
-.radio-labels {
-  margin-left: 16px;
-  font-size: 2rem;
-  color: #c36f00;
-}
-.radio-labels:hover {
-  color: #fbc47c;
-}
 .custom-button {
-  background-color: #fa8e01;
+  background-color: #000000;
   font-size: 1.5rem;
   border: none;
   box-shadow: 2px 2px #f8d4a5;
 }
-.custom-button:hover {
-  background-color: #ffc579;
-}
 .input-portion {
   border-right: solid;
   border-width: 0.3rem;
-  border-color: #fa8e01;
+  border-color: #000000;
 }
 .list-body {
   display: flex;
   justify-content: space-evenly;
   margin-bottom: 16px;
+  border: 1px solid black
 }
 .current-trigger-label {
   display: flex;
@@ -107,28 +104,22 @@ body {
   margin-bottom: 32px;
 }
 .trigger-main-body {
-  width: 80%;
+  width: 100%;
 }
 .list-items {
   width: 75%;
   font-size: 1.8rem;
   font-weight: bold;
-  color: #c36f00;
+  color: #000000;
 }
 .edit-button-container {
   margin-right: 8px;
 }
 .edit-buttons {
-  color: #f0ab51;
+  color: #000000;
   border: none;
-  background-color: #d4e9fe;
+  background-color: transparent;
   font-size: 2rem;
-}
-.fa-trash:hover {
-  color: #c36f00;
-}
-.fa-edit:hover {
-  color: #c36f00;
 }
 .edit-input-portion {
   width: 92%;
@@ -138,7 +129,7 @@ body {
 .edit-heading {
   font-size: 3.5rem;
   font-weight: bolder;
-  color: #fa9511;
+  color: #000000;
   margin-bottom: 2px;
 }
 .edit-radio-button {

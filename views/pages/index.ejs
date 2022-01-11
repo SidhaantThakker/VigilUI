@@ -14,49 +14,22 @@
         <form action="/triggers" method="POST" class="form">
           <div class="form-body">
             <div class="name-input">
-              <div class="label"><label for="name">Name</label></div>
-              <input
-                type="text"
-                class="form-control"
-                id="name"
-                placeholder="Name"
-                name="name"
-                autocomplete="off"
-                required
-              />
+              <div class="label"><label for="name">Trigger Stock Name</label></div>
+                <select id="name" name="name">
+                  <option value="NSE:REL">NSE:REL</option>
+                  <option value="NSE:AXS">NSE:AXS</option>
+                  <option value="NSE:HDF">NSE:HDF</option>
+                  <option value="NSE:KTK">NSE:KTK</option>
+                  <option value="NSE:ZEE">NSE:ZEE</option>
+                </select> 
             </div>
             <div class="type-input">
-              <div class="label"><label for="options">Type</label></div>
-              <div class="radio">
-                <div class="radio-button">
-                  <input
-                    class="main-button"
-                    type="radio"
-                    name="option"
-                    value=">"
-                    checked
-                  />
-                  <i class="fas fa-greater-than radio-labels"></i>
-                </div>
-                <div class="radio-button">
-                  <input
-                    class="main-button"
-                    type="radio"
-                    name="option"
-                    value="="
-                  />
-                  <i class="fas fa-equals radio-labels"></i>
-                </div>
-                <div class="radio-button">
-                  <input
-                    class="main-button"
-                    type="radio"
-                    name="option"
-                    value="<"
-                  />
-                  <i class="fas fa-less-than radio-labels"></i>
-                </div>
-              </div>
+              <div class="label"><label for="option">Trigger Type</label></div>
+                <select id="option" name="option">
+                  <option value=">">></option>
+                  <option value="=">=</option>
+                  <option value="<"><</option>
+                </select> 
             </div>
             <div class="value-input">
               <div class="label"><label for="value">Value</label></div>
@@ -91,10 +64,10 @@
             <% for(trigger of triggers){ %>
             <div class="list-body">
               <div class="list-items">
-                <li>
+                <p>
                   <%= trigger.trigger_name %> <%= trigger.trigger_option %> <%=
                   trigger.trigger_value %>
-                </li>
+                </p>
               </div>
               <div class="edit-button-container">
                 <form
