@@ -1,66 +1,125 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <%- include('../partials/head'); %>
-</head>
-<style>
-    .trigger-div{
-        display: flex;
-    }
-</style>
-<body class="container">
+  <head>
+    <%- include('../partials/head'); %>
+    <script
+      src="https://kit.fontawesome.com/abd67d4b78.js"
+      crossorigin="anonymous"
+    ></script>
+  </head>
+  <body>
+    <div class="main-body">
+      <%- include('../partials/header'); %>
+      <div class="input-portion">
+        <form action="/triggers" method="POST" class="form">
+          <div class="form-body">
+            <div class="name-input">
+              <div class="label"><label for="name">Name</label></div>
+              <input
+                type="text"
+                class="form-control"
+                id="name"
+                placeholder="Name"
+                name="name"
+                autocomplete="off"
+                required
+              />
+            </div>
+            <div class="type-input">
+              <div class="label"><label for="options">Type</label></div>
+              <div class="radio">
+                <div class="radio-button">
+                  <input
+                    class="main-button"
+                    type="radio"
+                    name="option"
+                    value=">"
+                    checked
+                  />
+                  <i class="fas fa-greater-than radio-labels"></i>
+                </div>
+                <div class="radio-button">
+                  <input
+                    class="main-button"
+                    type="radio"
+                    name="option"
+                    value="="
+                  />
+                  <i class="fas fa-equals radio-labels"></i>
+                </div>
+                <div class="radio-button">
+                  <input
+                    class="main-button"
+                    type="radio"
+                    name="option"
+                    value="<"
+                  />
+                  <i class="fas fa-less-than radio-labels"></i>
+                </div>
+              </div>
+            </div>
+            <div class="value-input">
+              <div class="label"><label for="value">Value</label></div>
+              <input
+                type="text"
+                class="form-control"
+                id="value"
+                placeholder="Value"
+                name="value"
+                autocomplete="off"
+                required
+              />
+            </div>
+            <div class="button-container">
+              <div class="button">
+                <button
+                  type="submit"
+                  class="btn btn-success btn-lg custom-button"
+                >
+                  Submit
+                </button>
+              </div>
+            </div>
+          </div>
+        </form>
+      </div>
 
-    <header>
-    <%- include('../partials/header'); %>
-    </header>
-
-    <main>
-        <div>
-            <div>
-                <form action="/triggers" method="POST">
-                    <label for="name">Name</label>
-                    <input type="text" id="name" name="name">
-                    <br>
-                    <label for="options">Type</label>
-                    <input type="radio" name='option' value=">" checked> > 
-                    <input type="radio" name='option' value="=" checked> = 
-                    <input type="radio" name='option' value="<" checked> <
-                    <br>
-                    <label for="value">Value</label>
-                    <input type="text" id="value" name="value">
-                    <br>
-                    <button type="submit" class="btn btn-success btn-sm">Submit</button>
+      <div class="display-portion">
+        <div class="trigger-main-body">
+          <div class="label current-trigger-label">Current Triggers</div>
+          <ul>
+            <% for(trigger of triggers){ %>
+            <div class="list-body">
+              <div class="list-items">
+                <li>
+                  <%= trigger.trigger_name %> <%= trigger.trigger_option %> <%=
+                  trigger.trigger_value %>
+                </li>
+              </div>
+              <div class="edit-button-container">
+                <form
+                  method="POST"
+                  action="/triggers/<%- trigger.id %>?_method=DELETE"
+                >
+                  <input type="hidden" name="_method" value="delete" />
+                  <button type="submit" class="edit-buttons">
+                    <a><i class="fas fa-trash"></i></a>
+                  </button>
                 </form>
+              </div>
+              <div>
+                <button class="edit-buttons">
+                  <a
+                    href="/edit?id=<%- trigger.id %>&name=<%- trigger.trigger_name %>&option=<%- trigger.trigger_option %>&value=<%- trigger.trigger_value %>"
+                    ><i class="fas fa-edit"></i
+                  ></a>
+                </button>
+              </div>
             </div>
-            
-            <div>
-                <h3>Current Triggers</h3>
-                <ul>    
-                    <% for(trigger of triggers){ %>
-                        <div class="trigger-div">
-                            <li>
-                                <%= trigger.trigger_name %>
-                                <%= trigger.trigger_option %>
-                                <%= trigger.trigger_value %>
-                            </li>
-                                <form method="POST" action="/triggers/<%- trigger.id %>?_method=DELETE">
-                                    <input type="hidden" name="_method" value="delete">
-                                    <button type="submit">
-                                        <a><i class="fa fa-close"></i></a>
-                                    </button> 
-                                </form>
-                               <button><a href="/edit?id=<%- trigger.id %>&name=<%- trigger.trigger_name %>&option=<%- trigger.trigger_option %>&value=<%- trigger.trigger_value %>"><i class="fa fa-pencil"></i></a></button>
-                        </div>
-                    <% }; %>
-                </ul>
-            </div>
-            
+            <% }; %>
+          </ul>
         </div>
-    </main>
-
-    <footer>
-    <%- include('../partials/footer'); %>
-    </footer>
-
-</body>
+      </div>
+    </div>
+  </body>
 </html>

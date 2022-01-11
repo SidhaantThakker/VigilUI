@@ -1,49 +1,86 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <%- include('../partials/head'); %>
-</head>
-<body class="container">
-
-    <header>
-    <%- include('../partials/header'); %>
-    </header>
-
-    <main>
+  <head>
+    <%- include('../partials/head'); %>
+    <script
+      src="https://kit.fontawesome.com/abd67d4b78.js"
+      crossorigin="anonymous"
+    ></script>
+  </head>
+  <body>
+    <div class="main-body">
+      <%- include('../partials/header'); %>
+      <div class="edit-input-portion">
         <div>
-            <h3>Stock Trigger Editor</h3>
-            <form action="/triggers/<%- id %>?_method=PUT" method="POST">
-                <label for="name">Name</label>
-                <input type="text" id="name" name="name" value="<%- name %>">
-                <br>
-                <label for="options">Type</label>
-                <% if(option == ">"){ %>
-                    <input type="radio" name='option' value=">" checked> >
-                  <% } else { %>  
-                    <input type="radio" name='option' value=">" > >
-                 <% } %>
-                 <% if(option == "="){ %>
-                    <input type="radio" name='option' value="=" checked> =
-                  <% } else { %>  
-                    <input type="radio" name='option' value="=" > =
-                 <% } %>
-                 <% if(option == "<"){ %>
-                    <input type="radio" name='option' value="<" checked> <
-                  <% } else { %>  
-                    <input type="radio" name='option' value="<" > <
-                 <% } %>
-                <br>
-                <label for="value">Value</label>
-                <input type="text" id="value" name="value" value="<%- value %>">
-                <br>
-                <button type="submit" class="btn btn-success btn-sm">Submit</button>
-            </form>
+          <div class="edit-heading">Stock Trigger Editor</div>
+          <form action="/triggers/<%- id %>?_method=PUT" method="POST">
+            <div class="form-body">
+              <div class="name-input">
+                <div class="label"><label for="name">Name</label></div>
+                <!-- <input type="text" id="name" name="name" value="<%- name %>" /> -->
+                <input
+                  type="text"
+                  class="form-control"
+                  id="name"
+                  placeholder="Name"
+                  name="name"
+                  autocomplete="off"
+                  value="<%- name %>"
+                />
+              </div>
+              <div class="type-input">
+                <div class="label"><label for="options">Type</label></div>
+                <div class="edit-input">
+                  <% if(option == ">"){ %>
+                  <input type="radio" name="option" value=">" checked />
+                  <i class="fas fa-greater-than radio-labels"></i> <% } else {
+                  %>
+                  <input type="radio" name="option" value=">" />
+                  <i class="fas fa-greater-than radio-labels"></i> <% } %> <%
+                  if(option == "="){ %>
+                  <input type="radio" name="option" value="=" checked />
+                  <i class="fas fa-equals radio-labels"></i> <% } else { %>
+                  <input type="radio" name="option" value="=" />
+                  <i class="fas fa-equals radio-labels"></i> <% } %> <%
+                  if(option == "<"){ %>
+                  <input type="radio" name="option" value="<" checked />
+                  <i class="fas fa-less-than radio-labels"></i> <% } else { %>
+                  <input type="radio" name="option" value="<" />
+                  <i class="fas fa-less-than radio-labels"></i> <% } %>
+                </div>
+              </div>
+              <div class="value-input">
+                <div class="label"><label for="value">Value</label></div>
+                <!-- <input
+                  type="text"
+                  id="value"
+                  name="value"
+                  value="<%- value %>"
+                /> -->
+                <input
+                  type="text"
+                  class="form-control"
+                  id="value"
+                  placeholder="Value"
+                  name="value"
+                  autocomplete="off"
+                  value="<%- value %>"
+                />
+              </div>
+              <div class="button-container">
+                <div class="button">
+                  <button
+                    type="submit"
+                    class="btn btn-success btn-lg custom-button"
+                  >
+                    Submit
+                  </button>
+                </div>
+              </div>
+            </div>
+          </form>
         </div>
-    </main>
-
-    <footer>
-    <%- include('../partials/footer'); %>
-    </footer>
-
-</body>
+      </div>
+    </div>
+  </body>
 </html>
