@@ -33,6 +33,9 @@ app.get('/', (req, res) => {
         } else {
             console.log(result)
             triggers = JSON.parse(result)
+            if(!triggers){
+                triggers = []
+            }
             res.render('pages/index', {
                 triggers: triggers
             });
