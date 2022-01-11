@@ -34,6 +34,16 @@ app.get("/", (req, res) => {
       if (!triggers) {
         triggers = [];
         triggers_json = JSON.stringify(triggers);
+        if(!triggers){
+            triggers = []
+            triggers_json = JSON.stringify(triggers)
+            if(!triggers){
+                triggers = []
+                triggers_json = JSON.stringify(triggers)
+                redis.set("triggerArr", triggers_json)
+            }
+            redis.set("triggerArr", triggers_json)
+        }
         redis.set("triggerArr", triggers_json);
       }
       res.render("pages/index", {
