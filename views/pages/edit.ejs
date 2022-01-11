@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <%- include('../partials/head'); %>
+</head>
+<body class="container">
+
+    <header>
+    <%- include('../partials/header'); %>
+    </header>
+
+    <main>
+        <div>
+            <h3>Stock Trigger Editor</h3>
+            <form action="/triggers/<%- id %>?_method=PUT" method="POST">
+                <label for="name">Name</label>
+                <input type="text" id="name" name="name" value="<%- name %>">
+                <br>
+                <label for="options">Type</label>
+                <% if(option == ">"){ %>
+                    <input type="radio" name='option' value=">" checked> >
+                  <% } else { %>  
+                    <input type="radio" name='option' value=">" > >
+                 <% } %>
+                 <% if(option == "="){ %>
+                    <input type="radio" name='option' value="=" checked> =
+                  <% } else { %>  
+                    <input type="radio" name='option' value="=" > =
+                 <% } %>
+                 <% if(option == "<"){ %>
+                    <input type="radio" name='option' value="<" checked> <
+                  <% } else { %>  
+                    <input type="radio" name='option' value="<" > <
+                 <% } %>
+                <br>
+                <label for="value">Value</label>
+                <input type="text" id="value" name="value" value="<%- value %>">
+                <br>
+                <button type="submit" class="btn btn-success btn-sm">Submit</button>
+            </form>
+        </div>
+    </main>
+
+    <footer>
+    <%- include('../partials/footer'); %>
+    </footer>
+
+</body>
+</html>
