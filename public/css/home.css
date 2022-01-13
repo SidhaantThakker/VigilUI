@@ -1,141 +1,184 @@
-* {
+*{
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  font-family: 'Open Sans', sans-serif;
 }
-body {
-  font-family: "Helvetica", Helvetica, sans-serif;
+
+a{
+  text-decoration: none;
+}
+
+.main-body{
+  display: grid;
+  grid-template-columns: 200px calc(100vw - 200px);
+}
+
+.logo{
+  font-size: 2rem;
+}
+
+.navbar{
+  width: 100%;
+  height: 8vh;
+  background: #f1f1f1;
+  border-bottom: 2px solid lavender;
+}
+
+.create-trigger, .display-triggers{
+  height: 92vh;
+}
+
+.display-triggers{
+  overflow-y: scroll;
+}
+
+
+.create-trigger{
+  border-right: 1px solid rgba(0,0,0,0.1);
+  box-shadow: 0px 4px 10px rgba(0,0,0,0.1);
+}
+
+.current-trigger-label{
+  font-weight: 600;
+  padding: 1.5rem;
+  background-color: #ebebeb;
+  border-bottom: 2px solid lavender;
+}
+
+.triggers-list{
+  display: table;
+  border-collapse: collapse;
+  width: 90%;
+  margin: auto;
+  gap: 1rem;
+}
+
+.list-body{
+  display: table-row;
+  text-align: center;
+  border-bottom: 1px solid #ebebeb;
+}
+
+.list-header{
+  font-weight: 300;
+  text-align: center;
+  color: rgba(0,0,0,0.5);
+  display: table-row;
+  border-bottom: 1px solid #ebebeb;
+}
+
+.trigger-name, .trigger-option, .trigger-value, .buttons, .list-header > div{
+  display: table-cell;
+  padding: 1rem;
+}
+
+.buttons{
+  display: flex;
+  gap: 2rem;
+}
+
+:root{
+  --alert: #ba4941;
+  --edit: #417cba;
+}
+
+.delete-button, .edit-button{
+  font-weight: 500;
+  border-radius: .4rem;
+  padding: .25rem;
+  width: 5rem;
+  transition: 200ms;
+}
+
+.delete-button{
+  border: 1px solid var(--alert);
+  color: var(--alert);
+}
+
+.delete-button:hover{
+  color: white;
+  background-color: var(--alert);
+}
+
+.edit-button{
+  border: 1px solid var(--edit);
+  color: var(--edit);
+}
+
+.edit-button:hover{
+  color: white;
+  background-color: var(--edit);
+}
+
+.edit-button:hover > a{
+  color: white;
+}
+
+.edit-button > a{
+  text-decoration: none;
+  color: var(--edit);
+}
+
+.edit-button > a:hover{
+  text-decoration: none;
+  color: white;
+}
+
+button{
+  background: none;
+  border: none;
+}
+
+.form-body{
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  place-items: center;
+}
+
+.value-input{
+  max-width: 8rem;
 }
 
 select{
-  width: 35%;
-  height: 30px;
+  width: 8rem;
+  padding: .25rem;
+  border: 1px solid rgba(0, 0, 0, 0.2);
 }
-.main-body {
-  display: flex;
-  background-color: #e9e9e9;
-  min-height: 100vh;
+
+.submit-button{
+  margin-top: 1rem;
 }
-.navbar {
-  width: 8%;
+
+.edit-input-portion{
   display: flex;
   flex-direction: column;
-  background-color: #3d49b8;
-  margin-right: 8px;
+  place-items: center;
+
 }
-.logo, .logo:hover{
-  text-decoration: none;
-  margin-top: 22px;
+
+.edit-heading{
+  font-weight: 600;
+  font-size: 1.1rem;
+  color: rgba(0,0,0,0.5);
 }
-a, a:hover{
-  color: #e9e9e9;
-  text-decoration: none;
-}
-.input-portion{
-  width: 56%;
-  margin: 10px;
-  display: flex;
-  justify-content: center;
-}
-.display-portion {
-  width: 36%;
-  margin: 2px;
-  display: flex;
-  justify-content: center;
-}
-.input-portion {
-  margin: 4px;
-}
-.form {
-  width: 60%;
-}
-.nav-button {
-  font-size: 50px;
-}
-.form-body {
+
+.edit-body{
+  display: grid;
+  place-items: center;
   height: 80vh;
+  margin: auto;
+  width: 400px;
+}
+
+.edit-body > .main-body{
   display: flex;
-  flex-direction: column;
-  justify-content: space-around;
+  grid-template-columns: 1fr;
 }
-.label {
-  margin-left: 0;
-  margin-bottom: 4px;
-  font-size: 2rem;
-  font-weight: bold;
-  color: #111111;
-}
-.form-control {
-  width: 80%;
-}
-.button-container {
+
+.edit-input{
   display: flex;
-  justify-content: center;
-}
-.radio {
-  margin-top: 12px;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-}
-.main-button {
-  transform: scale(1.5);
-}
-.custom-button {
-  background-color: #000000;
-  font-size: 1.5rem;
-  border: none;
-  box-shadow: 2px 2px #f8d4a5;
-}
-.input-portion {
-  border-right: solid;
-  border-width: 0.3rem;
-  border-color: #000000;
-}
-.list-body {
-  display: flex;
-  justify-content: space-evenly;
-  margin-bottom: 16px;
-  border: 1px solid black
-}
-.current-trigger-label {
-  display: flex;
-  justify-content: center;
-  margin-bottom: 32px;
-}
-.trigger-main-body {
-  width: 100%;
-}
-.list-items {
-  width: 75%;
-  font-size: 1.8rem;
-  font-weight: bold;
-  color: #000000;
-}
-.edit-button-container {
-  margin-right: 8px;
-}
-.edit-buttons {
-  color: #000000;
-  border: none;
-  background-color: transparent;
-  font-size: 2rem;
-}
-.edit-input-portion {
-  width: 92%;
-  display: flex;
-  justify-content: center;
-}
-.edit-heading {
-  font-size: 3.5rem;
-  font-weight: bolder;
-  color: #000000;
-  margin-bottom: 2px;
-}
-.edit-radio-button {
-  transform: scale(2);
-}
-.edit-input {
-  display: flex;
-  justify-content: space-between;
+  flex-direction:   column;
 }

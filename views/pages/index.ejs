@@ -6,36 +6,40 @@
       src="https://kit.fontawesome.com/abd67d4b78.js"
       crossorigin="anonymous"
     ></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap" rel="stylesheet">
   </head>
   <body>
+    <%- include('../partials/header'); %>
     <div class="main-body">
-      <%- include('../partials/header'); %>
-      <div class="input-portion">
+
+      <div class="create-trigger">
         <form action="/triggers" method="POST" class="form">
           <div class="form-body">
             <div class="name-input">
-              <div class="label"><label for="name">Trigger Stock Name</label></div>
+              <div class="label"><label for="name">Stock Name</label></div>
                 <select id="name" name="name">
                   <option value="NSE:REL">NSE:REL</option>
                   <option value="NSE:AXS">NSE:AXS</option>
                   <option value="NSE:HDF">NSE:HDF</option>
                   <option value="NSE:KTK">NSE:KTK</option>
                   <option value="NSE:ZEE">NSE:ZEE</option>
-                </select> 
+                </select>
             </div>
             <div class="type-input">
-              <div class="label"><label for="option">Trigger Type</label></div>
+              <div class="label"><label for="option">Type</label></div>
                 <select id="option" name="option">
                   <option value=">">></option>
                   <option value="=">=</option>
                   <option value="<"><</option>
-                </select> 
+                </select>
             </div>
             <div class="value-input">
               <div class="label"><label for="value">Value</label></div>
               <input
                 type="text"
-                class="form-control"
+                class="form-control value-input"
                 id="value"
                 placeholder="Value"
                 name="value"
@@ -47,7 +51,7 @@
               <div class="button">
                 <button
                   type="submit"
-                  class="btn btn-success btn-lg custom-button"
+                  class="btn btn-success custom-button submit-button"
                 >
                   Submit
                 </button>
@@ -57,36 +61,52 @@
         </form>
       </div>
 
-      <div class="display-portion">
+      <div class="display-triggers">
         <div class="trigger-main-body">
           <div class="label current-trigger-label">Current Triggers</div>
-          <ul>
+
+          <ul class="triggers-list">
+            <div class="list-header">
+              <div>
+                Stock Name
+              </div>
+              <div>
+                Option
+              </div>
+              <div>
+                Price
+              </div>
+            </div>
             <% for(trigger of triggers){ %>
             <div class="list-body">
-              <div class="list-items">
-                <p>
-                  <%= trigger.trigger_name %> <%= trigger.trigger_option %> <%=
-                  trigger.trigger_value %>
-                </p>
+              <div class="trigger-name">
+                  <%= trigger.trigger_name %>
               </div>
-              <div class="edit-button-container">
+              <div class="trigger-option">
+                <%= trigger.trigger_option %>
+              </div>
+              <div class="trigger-value">
+                <%=
+                trigger.trigger_value %>
+              </div>
+              <div class="buttons">
+                <div class="edit-button">
+                    <a
+                      href="/edit?id=<%- trigger.id %>&name=<%- trigger.trigger_name %>&option=<%- trigger.trigger_option %>&value=<%- trigger.trigger_value %>"
+                      >Edit</i
+                    ></a>
+              </div>
+              <div class="delete-button-div">
                 <form
                   method="POST"
                   action="/triggers/<%- trigger.id %>?_method=DELETE"
                 >
                   <input type="hidden" name="_method" value="delete" />
-                  <button type="submit" class="edit-buttons">
-                    <a><i class="fas fa-trash"></i></a>
+                  <button type="submit" class="delete-button">
+                    Delete
                   </button>
                 </form>
               </div>
-              <div>
-                <button class="edit-buttons">
-                  <a
-                    href="/edit?id=<%- trigger.id %>&name=<%- trigger.trigger_name %>&option=<%- trigger.trigger_option %>&value=<%- trigger.trigger_value %>"
-                    ><i class="fas fa-edit"></i
-                  ></a>
-                </button>
               </div>
             </div>
             <% }; %>
